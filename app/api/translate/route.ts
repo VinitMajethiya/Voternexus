@@ -56,9 +56,9 @@ export async function POST(req: NextRequest) {
 
     // Call Google Translate API
     let response = await translateClient.translate(text as any, target);
-    let translations = response[0];
-    translations = Array.isArray(translations) ? translations : [translations];
-    const translatedText = Array.isArray(text) ? translations : translations[0];
+    const rawTranslations = response[0];
+    const translationsArray = Array.isArray(rawTranslations) ? rawTranslations : [rawTranslations];
+    const translatedText = Array.isArray(text) ? translationsArray : translationsArray[0];
 
     // Save to Cache (7 days TTL = 604800 seconds)
     if (redis) {
