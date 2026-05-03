@@ -26,7 +26,7 @@ export default function LanguageSwitcher() {
   const currentLocale = useLocale();
 
   const handleLocaleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    router.replace(pathname, { locale: e.target.value });
+    router.replace(pathname, { locale: e.target.value as any });
   };
 
   return (

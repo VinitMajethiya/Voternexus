@@ -46,7 +46,7 @@ export default function BoothLocator() {
       libraries: ['places', 'streetView']
     });
 
-    loader.importLibrary('maps').then(({ Map }) => {
+    (loader as any).importLibrary('maps').then(({ Map }: any) => {
       if (mapRef.current) {
         const m = new Map(mapRef.current, {
           center: userLocation,
@@ -55,14 +55,14 @@ export default function BoothLocator() {
         });
         setMap(m);
 
-        loader.importLibrary('routes').then(({ DirectionsService, DirectionsRenderer }) => {
+        (loader as any).importLibrary('routes').then(({ DirectionsService, DirectionsRenderer }: any) => {
           setDirectionsService(new DirectionsService());
           const renderer = new DirectionsRenderer();
           renderer.setMap(m);
           setDirectionsRenderer(renderer);
         });
       }
-    }).catch(e => console.error('Failed to load Google Maps', e));
+    }).catch((e: any) => console.error('Failed to load Google Maps', e));
   }, []);
 
   useEffect(() => {

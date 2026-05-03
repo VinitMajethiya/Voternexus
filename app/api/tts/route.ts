@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Return the audio buffer as a streaming response
-    return new Response(response.audioContent, {
+    return new Response(response.audioContent as any, {
       headers: {
         'Content-Type': 'audio/mp3',
         'Cache-Control': 'public, max-age=86400', // Cache for 24 hours
