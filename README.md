@@ -12,6 +12,116 @@
 
 ---
 
+## 1. Chosen Vertical
+
+**Civic Technology / Democratic Participation**
+
+India conducts the world's largest democratic exercise, yet millions of first-time and differently-abled voters face barriers — lack of information about the process, inability to verify election claims, and language exclusion. VoterNexus addresses this by providing a single, free, AI-powered platform that guides any Indian voter from registration readiness all the way through Election Day.
+
+---
+
+## 2. Approach & Logic
+
+VoterNexus is built around a **phase-aware architecture** — the core insight that a voter's needs change dramatically depending on *where they are in the election calendar*:
+
+```
+Phase Detection → UI Theme → Feature Prominence
+─────────────────────────────────────────────────
+Pre-Election  (>60 days) → Blue    → Readiness tools front
+Campaign      (14–60d)   → Amber   → Affidavit Decoder + Misinfo Shield
+Election Week (0–7d)     → Orange  → Booth Locator + EVM Sandbox
+Election Day  (today)    → Green   → Live Queue + I Voted Badge
+Post-Election            → Grey    → Archive + results links
+```
+
+The phase is computed from `data/election-schedule.json` via `lib/election-phase.ts` using `date-fns`. Every page and component reacts to this context automatically — no manual configuration needed.
+
+**AI Integration Strategy:**
+- **Google Gemini 1.5 Flash** powers the Candidate Comparison tool and Affidavit Vision analysis via the Gemini API.
+- **Anthropic Claude Haiku** powers the Affidavit Decoder (structured PDF extraction) and the Misinfo Shield (fact-checking), abstracted through a single `lib/ai-client.ts` wrapper.
+- **Google Cloud Text-to-Speech** provides screen-reader-quality audio for the Universal Accessibility Suite.
+- **Google Cloud Translate** with Redis caching delivers real-time translation across 13 Indian languages.
+
+---
+
+## 3. How the Solution Works
+
+### Core Flow
+
+```
+User lands → Phase detected → Relevant tools highlighted
+     ↓
+Readiness Check (EligibilityQuiz → DocumentChecklist → TimelineTracker)
+     ↓
+Learn & Verify (EVMSimulator → AffidavitDecoder → MisinfoShield)
+     ↓
+Election Day (BoothLocator → QueueReporter → VotedBadge)
+```
+
+### Key Technical Pipelines
+
+**Affidavit Decoder:**
+```
+PDF URL / File Upload
+  → Server-side fetch (never exposes URL to client)
+  → pdf-parse extraction → Tesseract.js OCR fallback (scanned PDFs)
+  → PII sanitization (Aadhaar, PAN, phone redacted)
+  → Claude Haiku structured extraction with Zod validation
+  → Confidence score → Typed AffidavitSummary response
+```
+
+**Misinfo Shield:**
+```
+User claim (10–500 chars)
+  → franc language detection
+  → Input sanitization
+  → Claude Haiku fact-check → Verdict (TRUE/PARTIALLY_TRUE/FALSE/UNVERIFIED/OPINION)
+  → Official ECI/PIB source grounding
+  → FactCheckResult with confidence score
+```
+
+**Translate API:**
+```
+Text + target locale
+  → Redis cache lookup (7-day TTL)
+  → Cache miss → Google Cloud Translate API
+  → Result cached → Response
+```
+
+**Queue Reporter (Election Day):**
+```
+User submits wait level (short/moderate/long)
+  → IP-based rate limit via Upstash Redis (1 report per booth per 15 min)
+  → Stored as rolling array of last 20 reports (2-hour TTL)
+  → Aggregated by mode of last 45 minutes of reports
+  → Displayed on Booth Locator map pins
+```
+
+### Accessibility Architecture
+
+The `AccessibilityProvider` wraps the entire app and applies user preferences globally:
+- **Visual:** High contrast modes (light/dark/yellow-on-black), text size scaling, dyslexia-friendly font
+- **Motor:** Enlarged click targets (`motor-mode` CSS class), dwell-click overlay, switch access
+- **Cognitive:** Simple mode, reading ruler overlay
+- **Auditory:** Floating TTS button (Google Cloud TTS), ISL video panel, AccessVoteAssistant
+
+---
+
+## 4. Assumptions Made
+
+1. **Election data is maintainer-managed:** `data/election-schedule.json` is updated manually each election cycle. No live ECI API integration is assumed (ECI does not provide a public REST API).
+2. **Booth GeoJSON is pre-generated:** `public/data/booths.geojson` is a static file generated from ECI PDF booth lists. In a production deployment, a maintainer script would regenerate this each cycle.
+3. **Redis is optional:** The Translate cache and Queue Reporter gracefully degrade if `UPSTASH_REDIS_REST_URL` is not set — translation falls through to the API every time, and queue reporting is disabled.
+4. **Google Maps API key is optional:** The Booth Locator falls back to the static GeoJSON data if no Maps key is provided.
+5. **No voter authentication:** VoterNexus intentionally has no login system. All civic information is public. The only "user state" is session-scoped (checklist completion, badge customization) — never persisted to a server.
+6. **Political neutrality is non-negotiable:** The EVM Simulator uses fictional candidates (Candidate A/B/C + NOTA). The Affidavit Decoder presents raw financial data only. No editorial framing is ever applied.
+
+---
+
+🔗 **Live Deployment:** [voternexus-om55-eyizhliu1-vinit-majethiyas-projects.vercel.app](https://voternexus-om55-eyizhliu1-vinit-majethiyas-projects.vercel.app)
+
+---
+
 ## Overview
 
 VoterNexus is a **phase-aware civic platform** that adapts its UI and feature prominence based on where India currently is in the election calendar — from pre-election readiness tools to real-time Election Day utilities.
