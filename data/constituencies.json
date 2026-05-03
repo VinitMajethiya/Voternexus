@@ -1,0 +1,9 @@
+[
+  { "id": "pune", "name": "Pune", "state": "Maharashtra" },
+  { "id": "mumbai_north", "name": "Mumbai North", "state": "Maharashtra" },
+  { "id": "bangalore_central", "name": "Bangalore Central", "state": "Karnataka" },
+  { "id": "delhi_chandni_chowk", "name": "Chandni Chowk", "state": "Delhi" },
+  { "id": "hyderabad", "name": "Hyderabad", "state": "Telangana" },
+  { "id": "chennai_south", "name": "Chennai South", "state": "Tamil Nadu" },
+  { "id": "kolkata_dakshin", "name": "Kolkata Dakshin", "state": "West Bengal" }
+]

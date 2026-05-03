@@ -1,0 +1,14 @@
+[
+  {
+    "id": "ls-2024-pune",
+    "state": "Maharashtra",
+    "constituency": "Pune",
+    "election_type": "Lok Sabha",
+    "nomination_deadline": "2024-04-25",
+    "withdrawal_deadline": "2024-04-29",
+    "registration_cutoff": "2024-04-15",
+    "mcc_start": "2024-03-16",
+    "polling_day": "2024-05-13",
+    "counting_day": "2024-06-04"
+  }
+]

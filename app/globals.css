@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-phase-accent: #1A56DB; /* Default to Pre-Election Blue */
+}
+
+@layer base {
+  body {
+    @apply font-body bg-white text-slate-900;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+
+  html.hc-light body {
+    @apply bg-white text-black;
+    --color-phase-accent: #0000CC !important;
+  }
+
+  html.hc-dark body {
+    @apply bg-black text-white;
+    --color-phase-accent: #FFFF00 !important;
+  }
+
+  html.hc-yellow body {
+    @apply bg-black text-[#FFFF00];
+    --color-phase-accent: #FF6600 !important;
+  }
+
+  html.motor-mode .btn-primary, html.motor-mode button, html.motor-mode a {
+    @apply min-h-[60px] min-w-[60px] m-[8px];
+  }
+
+  body.font-dyslexic {
+    font-family: 'OpenDyslexic', 'Inter', sans-serif !important;
+  }
+
+  body.simple-mode {
+    font-size: 1.25rem !important;
+    line-height: 1.8 !important;
+  }
+  
+  body.simple-mode h1, body.simple-mode h2, body.simple-mode h3, body.simple-mode h4, body.simple-mode h5, body.simple-mode h6 {
+    font-size: 2rem !important;
+  }
+}
+
+@layer components {
+  .bento-card {
+    @apply p-6 rounded-bento border border-slate-100 bg-white shadow-sm transition-all hover:shadow-md hover:scale-[1.01];
+  }
+  
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border-b border-white/20;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 rounded-pill font-bold text-white transition-all hover:opacity-90 active:scale-95;
+    background-color: var(--color-phase-accent);
+  }
+  
+  .text-phase {
+    color: var(--color-phase-accent);
+  }
+  
+  .bg-phase {
+    background-color: var(--color-phase-accent);
+  }
+  
+  .border-phase {
+    border-color: var(--color-phase-accent);
+  }
+}

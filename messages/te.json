@@ -1,0 +1,68 @@
+{
+  "landing": {
+    "get_started": "Get Started",
+    "official_tool": "Official ECI Companion Tool",
+    "hero_title": "Every Vote is a",
+    "hero_nexus": "Nexus of Change.",
+    "hero_desc": "Navigate the complexity of Indian elections with clarity. 100% Free. 100% Privacy-First. Open-Source for the People.",
+    "prepare": "Prepare for Polling",
+    "simulate": "Simulate Voting",
+    "evm_title": "EVM Simulator",
+    "evm_desc": "Practice your vote on a high-fidelity replica of the Indian voting machine.",
+    "affidavit_title": "Affidavit Decoder",
+    "affidavit_desc": "AI-powered summaries of candidate filings. Know who you are voting for.",
+    "booth_title": "Live Booth Assistant",
+    "booth_desc": "Real-time queue updates and precise directions to your polling station.",
+    "footer": "© 2026 VoterNexus Project — Built for Democracy"
+  },
+  "readiness": {
+    "title": "Are you ready to vote?",
+    "desc": "Before heading to the booth, ensure you are eligible and have the correct documentation."
+  },
+  "learn": {
+    "title": "Knowledge is",
+    "power": "Power.",
+    "desc": "Understand your candidates, verify information, and master the voting process in our interactive learning hub.",
+    "ai_guidance": "Neutral AI Guidance",
+    "tab_evm": "EVM Simulator",
+    "tab_affidavit": "Affidavit Decoder",
+    "tab_misinfo": "Misinfo Shield",
+    "why_title": "Why Practice?",
+    "why_p1": "The Electronic Voting Machine (EVM) and Voter Verifiable Paper Audit Trail (VVPAT) are the backbones of Indian democracy. For first-time voters, the process can be intimidating.",
+    "why_p2": "By practicing in this sandbox, you learn:",
+    "why_l1": "How the control unit and ballot unit interact.",
+    "why_l2": "How to verify your choice on the VVPAT screen.",
+    "why_l3": "The meaning of different lights and sound signals.",
+    "why_l4": "How to ensure your vote is cast successfully.",
+    "privacy_title": "Voting is Private",
+    "privacy_desc": "Remember: Your vote is secret. No one — not even the polling officers — should see who you vote for. This simulator does not record any of your choices.",
+    "privacy_cta": "Learn about Voter Privacy Rights"
+  },
+  "quiz": {
+    "q1_title": "Are you 18 years or older?",
+    "q1_desc": "You must be at least 18 years old on the qualifying date to vote in Indian elections.",
+    "q2_title": "Are you a citizen of India?",
+    "q2_desc": "Only citizens of India are eligible to register as voters.",
+    "q3_title": "Are you registered as a voter?",
+    "q3_desc": "Check if your name is on the official electoral roll for your constituency.",
+    "yes": "Yes, I am",
+    "no": "No, I'm not",
+    "not_sure": "I'm not sure",
+    "result_eligible_title": "You're all set! 🎉",
+    "result_eligible_body": "You are eligible and registered. Get ready to make your voice heard on election day!",
+    "result_partial_title": "Almost there!",
+    "result_partial_body": "You are eligible to vote, but you need to register first.",
+    "result_ineligible_title": "Not yet",
+    "result_ineligible_body": "You currently do not meet the eligibility criteria for voting in India.",
+    "restart": "Restart Quiz"
+  },
+  "checklist": {
+    "title": "Document Checklist",
+    "desc": "Select the documents you have ready for election day.",
+    "ready": "You're Ready!",
+    "not_ready": "Select at least one ID",
+    "lost_id_title": "Don't have these?",
+    "lost_id_desc": "Our triage system can help you find alternatives.",
+    "lost_id_cta": "Lost my ID?"
+  }
+}

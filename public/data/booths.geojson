@@ -1,0 +1,35 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "booth_number": "101",
+        "booth_name": "Government Primary School, Pune West",
+        "address": "123 Civic Lane, Pune, Maharashtra",
+        "district": "Pune",
+        "state": "Maharashtra",
+        "is_accessible": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [73.8567, 18.5204]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "booth_number": "102",
+        "booth_name": "Modern High School, Shivajinagar",
+        "address": "456 Knowledge St, Pune, Maharashtra",
+        "district": "Pune",
+        "state": "Maharashtra",
+        "is_accessible": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [73.8474, 18.5308]
+      }
+    }
+  ]
+}

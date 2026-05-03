@@ -1,0 +1,111 @@
+{
+  "start": {
+    "id": "start",
+    "question": "What issue are you facing?",
+    "options": [
+      { "label": "I lost my Voter ID Card (EPIC)", "next_id": "lost_id" },
+      { "label": "My name is not on the Voter List", "next_id": "missing_name" },
+      { "label": "I moved to a new address", "next_id": "moved_address" },
+      { "label": "I am a first-time voter", "next_id": "first_time" }
+    ]
+  },
+  "lost_id": {
+    "id": "lost_id",
+    "question": "Do you have any other official photo ID?",
+    "options": [
+      { "label": "Yes, I have Aadhaar/Passport/DL etc.", "next_id": "have_alternate_id" },
+      { "label": "No, I don't have any other ID", "next_id": "no_id_at_all" }
+    ]
+  },
+  "have_alternate_id": {
+    "id": "have_alternate_id",
+    "terminal": {
+      "title": "You can still vote!",
+      "steps": [
+        "Check the Document Checklist for the 12 accepted alternate IDs.",
+        "Carry any ONE of those IDs (e.g., Aadhaar, Passport, PAN) to your booth.",
+        "The Election Commission allows these even if you don't have your EPIC card."
+      ],
+      "cta_label": "View Accepted IDs",
+      "cta_url": "https://voters.eci.gov.in/"
+    }
+  },
+  "no_id_at_all": {
+    "id": "no_id_at_all",
+    "terminal": {
+      "title": "Download your digital Voter ID",
+      "steps": [
+        "Go to the ECI Voter Portal.",
+        "Login and download your e-EPIC (digital Voter ID).",
+        "Print the e-EPIC and carry it to the booth with a photo slip.",
+        "If you can't download it, contact your ERO (Electoral Registration Officer)."
+      ],
+      "cta_label": "Download e-EPIC",
+      "cta_url": "https://voters.eci.gov.in/home/download-eepic"
+    }
+  },
+  "missing_name": {
+    "id": "missing_name",
+    "question": "Have you searched on the National Voter Search portal?",
+    "options": [
+      { "label": "Yes, but couldn't find my name", "next_id": "search_failed" },
+      { "label": "No, I haven't searched yet", "next_id": "search_now" }
+    ]
+  },
+  "search_now": {
+    "id": "search_now",
+    "terminal": {
+      "title": "Check the Electoral Roll",
+      "steps": [
+        "Visit the Electoral Search portal.",
+        "Search by Details or by EPIC Number.",
+        "If found, note your Part Number and Serial Number.",
+        "If not found, proceed to register immediately."
+      ],
+      "cta_label": "Search Voter List",
+      "cta_url": "https://electoralsearch.eci.gov.in/"
+    }
+  },
+  "search_failed": {
+    "id": "search_failed",
+    "terminal": {
+      "title": "Register as a New Voter",
+      "steps": [
+        "If your name is missing, you must fill Form 6.",
+        "The deadline is usually 2-3 weeks before the election.",
+        "You can register online via the NVSP portal.",
+        "Keep your age and residence proof ready."
+      ],
+      "cta_label": "Register Now",
+      "cta_url": "https://voters.eci.gov.in/home/form6"
+    }
+  },
+  "moved_address": {
+    "id": "moved_address",
+    "terminal": {
+      "title": "Update your Address (Form 8)",
+      "steps": [
+        "Login to the Voter Portal.",
+        "Fill Form 8 for 'Shifting of Residence'.",
+        "Provide proof of your new address.",
+        "Your name will be shifted to the new polling booth."
+      ],
+      "cta_label": "Fill Form 8",
+      "cta_url": "https://voters.eci.gov.in/home/form8"
+    }
+  },
+  "first_time": {
+    "id": "first_time",
+    "terminal": {
+      "title": "Welcome, Future Voter!",
+      "steps": [
+        "Check if you are 18+ years old.",
+        "Register online using Form 6.",
+        "Wait for your EPIC card to arrive or download e-EPIC.",
+        "Practice using the EVM Simulator on this app!"
+      ],
+      "cta_label": "New Registration",
+      "cta_url": "https://voters.eci.gov.in/home/form6"
+    }
+  }
+}
